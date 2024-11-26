@@ -1,0 +1,88 @@
+@startuml
+'https://plantuml.com/class-diagram'
+
+Commande "1" -up- "*" Forfait : concerne
+Commande "1" -right- "*" Client : commandé par
+Commande "1" -left- "*" Cours : concerne
+Commande "*" -down- "1" Location
+Commande "1" -- "1" Paiement
+Moniteur "*" -right- "1" Cours
+Materiel "*" -- "*" Cours
+Materiel "*" -up- "*" Location
+Panne "1" -- "1" Materiel
+HistoriquePanne "*" -- "1" Materiel
+
+
+
+class Forfait{
+    idForfait
+    type
+    prix
+}
+
+class Paiement{
+    idPaiement
+    montant
+    estPayé
+}
+
+class Camping{
+    idCamping
+    nomCamping
+    réduction
+}
+
+class Client{
+    idClient
+    nomClient
+    prenomClient
+    adresse
+}
+
+class Commande{
+    idCommande
+}
+
+class Cours{
+    idCours
+    niveau
+    date
+    heureDebut
+    heureFin
+    nbPlace
+}
+
+class Moniteur{
+    idMoniteur
+    nomMoniteur
+    prenomMoniteur
+    diplôme
+}
+
+class Location{
+    idLocation
+    prix
+    dateLoc
+    heureDebutLoc
+    heureFinLoc
+}
+
+class Materiel{
+    idMateriel
+    type
+    caracteristique
+}
+
+class Panne{
+    idPanne
+    typePanne
+    datePanne
+}
+
+class HistoriquePanne{
+    idHistPanne
+    typeHistPanne
+    dateHistPanne
+}
+
+@enduml
