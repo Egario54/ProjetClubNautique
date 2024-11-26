@@ -11,8 +11,12 @@ Materiel "*" -- "*" Cours
 Materiel "*" -up- "*" Location
 Panne "1" -- "1" Materiel
 HistoriquePanne "*" -- "1" Materiel
+Caution "1" -left- "1" Location
 
-
+class Caution{
+    idCaution
+    montant
+}
 
 class Forfait{
     idForfait
@@ -37,6 +41,8 @@ class Client{
     nomClient
     prenomClient
     adresse
+    materielSouhaite
+    appreciations
 }
 
 class Commande{
@@ -49,6 +55,7 @@ class Cours{
     date
     heureDebut
     heureFin
+    estAnnule
     nbPlace
 }
 
