@@ -1,0 +1,23 @@
+@startuml
+title Diagramme de Séquence - Programmer un cour
+actor Proprietaire
+actor Moniteur
+participant Systeme
+participant Compte
+participant Cour
+
+'Connexion à un compte'
+Proprietaire -> Systeme: seConnecter()
+Systeme -> Compte: validationAuthentification()
+Compte -> Proprietaire: confirmerConnexion()
+
+'Séparation'
+|||
+
+'Propriétaire ajoute un cours'
+Proprietaire -> Systeme: ajouterCours()
+Systeme -> Cour: creerCours()
+Cour -> Systeme: confirmerCreationCours()
+Systeme -> Proprietaire: confirmerAjoutCours()
+
+@enduml

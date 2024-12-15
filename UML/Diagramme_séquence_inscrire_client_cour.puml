@@ -1,0 +1,43 @@
+@startuml
+title Diagramme de Séquence - Inscrire un client à un cour
+actor Utilisateur
+participant Systeme
+participant Compte
+participant Cour
+participant Client
+
+'Connexion à un compte'
+Utilisateur -> Systeme: seConnecter()
+Systeme -> Compte: validationAuthentification()
+Compte -> Utilisateur: confirmerConnexion()
+
+'Séparation'
+|||
+
+'Inscrire un client à un cour par propriétaire et moniteur'
+Utilisateur -> Systeme: inscrireClientCour()
+Systeme -> Compte : verifierDroitsAcces()
+alt consultCours == true
+    Compte --> Systeme : true
+    Systeme -> Cour : getListeCours()
+    Cour --> Systeme : listeCours
+    Systeme -> Utilisateur : afficherListeCours()
+    Utilisateur -> Systeme : selectionnerCour()
+    Systeme -> Client : getListeClients()
+    Client --> Systeme : listeClients
+    Systeme -> Utilisateur : afficherListeClients()
+    Utilisateur -> Systeme : selectionnerClient()
+    Systeme -> Utilisateur : afficherConfirmationInscription()
+    Systeme -> Cour : inscriptionClient()
+    alt confirmationInscription == true
+        Cour --> Systeme : true
+        Systeme -> Utilisateur : afficherMessageValidation()
+    else confirmationInscription == false
+        Cour --> Systeme : false
+        Systeme -> Utilisateur : afficherMessageErreur()
+    end
+else consultCours == false
+    Compte --> Systeme : false
+    Systeme --> Utilisateur : afficherMessageErreur()
+end
+@enduml

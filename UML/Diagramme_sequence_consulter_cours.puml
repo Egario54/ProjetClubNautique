@@ -1,0 +1,28 @@
+@startuml
+title Diagramme de Séquence - Consulter les cours disponibles
+actor Utilisateur
+participant Systeme
+participant Compte
+participant Cour
+
+'Connexion à un compte'
+Utilisateur -> Systeme: seConnecter()
+Systeme -> Compte: validationAuthentification()
+Compte -> Utilisateur: confirmerConnexion()
+
+'Séparation'
+|||
+
+'Consulter les cours disponibles'
+Utilisateur -> Systeme : consulterCours()
+Systeme -> Compte : verifierDroitsAcces()
+alt consultCours == true
+    Compte --> Systeme : true
+    Systeme -> Cour : getCoursDispo()
+    Cour --> Systeme : listeCours
+    Systeme --> Utilisateur : afficherListeCours()
+else consultCours == false
+    Compte --> Systeme : false
+    Systeme --> Utilisateur : afficherMessageErreur()
+end
+@enduml

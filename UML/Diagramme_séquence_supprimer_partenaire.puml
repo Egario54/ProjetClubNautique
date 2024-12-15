@@ -1,0 +1,25 @@
+@startuml
+title Diagramme de Séquence - Supprimer un partenaire
+actor Proprietaire
+participant Systeme
+participant Compte
+participant Camping
+
+'Connexion à un compte'
+Proprietaire -> Systeme: seConnecter()
+Systeme -> Compte: validationAuthentification()
+Compte -> Proprietaire: confirmerConnexion()
+
+'Séparation'
+|||
+
+'Ajouter un partenaire'
+Proprietaire -> Systeme: modifierListePartenaires()
+Systeme -> Camping: obtenirListeCamping()
+Camping -> Systeme: listeCamping
+Systeme -> Proprietaire: afficherListePartenaires()
+
+Proprietaire -> Systeme: supprimerPartenaire(partenaire)
+Systeme -> Camping: supprimerPartenaire(partenaire)
+Camping -> Proprietaire: confirmerSuppressionPartenaire()
+@enduml

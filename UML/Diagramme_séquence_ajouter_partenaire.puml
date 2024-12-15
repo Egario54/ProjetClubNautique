@@ -1,0 +1,25 @@
+@startuml
+title Diagramme de Séquence - Ajouter un partenaire
+actor Proprietaire
+participant Systeme
+participant Compte
+participant Camping
+
+'Connexion à un compte'
+Proprietaire -> Systeme: seConnecter()
+Systeme -> Compte: validationAuthentification()
+Compte -> Proprietaire: confirmerConnexion()
+
+'Séparation'
+|||
+
+'Ajouter un partenaire'
+Proprietaire -> Systeme: modifierListePartenaires()
+Systeme -> Camping: obtenirListeCamping()
+Camping -> Systeme: listeCamping
+Systeme -> Proprietaire: afficherListePartenaires()
+
+Proprietaire -> Systeme: ajouterPartenaire(nom, réduction)
+Systeme -> Camping: ajouterPartenaire(nom, réduction)
+Camping -> Proprietaire: confirmerAjoutPartenaire()
+@enduml

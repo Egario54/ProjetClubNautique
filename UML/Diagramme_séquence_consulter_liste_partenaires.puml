@@ -1,0 +1,28 @@
+@startuml
+title Diagramme de Séquence - Consulter la liste des partenaires
+actor Utilisateur
+participant Systeme
+participant Compte
+participant Camping
+
+'Connexion à un compte'
+Utilisateur -> Systeme: seConnecter()
+Systeme -> Compte: validationAuthentification()
+Compte -> Utilisateur: confirmerConnexion()
+
+'Séparation'
+|||
+
+'Consulter la liste des partenaires'
+Utilisateur -> Systeme: consulterListePartenaires()
+Systeme -> Compte : verifierDroitsAcces()
+alt consultCours == true
+    Compte --> Systeme : true
+    Systeme -> Camping: obtenirListeCampings()
+    Camping --> Systeme: listeCampings
+    Systeme --> Utilisateur: afficherListePartenaires()
+else consultCours == false
+    Compte --> Systeme : false
+    Systeme --> Utilisateur: afficherMessageErreur()
+end
+@enduml
