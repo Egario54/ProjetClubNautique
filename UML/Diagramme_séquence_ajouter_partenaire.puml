@@ -16,7 +16,7 @@ Compte -> Proprietaire: confirmerConnexion()
 'Ajouter un partenaire'
 Proprietaire -> Systeme: modifierListePartenaires()
 Systeme -> Camping: obtenirListeCamping()
-Camping -> Systeme: listeCamping
+Camping --> Systeme: listeCamping
 Systeme -> Proprietaire: afficherListePartenaires()
 
 Proprietaire -> Systeme: ajouterPartenaire(nom, réduction)

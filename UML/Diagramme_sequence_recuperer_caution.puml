@@ -17,9 +17,16 @@ Compte -> Utilisateur: confirmerConnexion()
 'Utilisateur sélectionne un client'
 Utilisateur -> Systeme: rechercherClient()
 Systeme -> Client: rechercherClient()
-return
-Utilisateur <-- Systeme
+return listeClients
+Utilisateur <-- Systeme: listeClients
 
+
+'Séparation'
+|||
+
+'Sélection d'un client'
+Utilisateur -> Systeme: selectionnerClient()
+return Client
 
 'Séparation'
 |||
@@ -27,9 +34,17 @@ Utilisateur <-- Systeme
 'Utilisateur récupère la caution'
 Utilisateur -> Systeme: recupererCaution()
 Systeme -> Client: recupererCaution()
+alt Paiement réussi
 Client -> Paiement: paiementCaution()
-return
-Systeme <-- Client
-Utilisateur <-- Systeme
+return Paiement
+Systeme <-- Client: Paiement
+Utilisateur <- Systeme: afficherMessageValidation(Paiement)
+
+else Paiement échoué
+Client -> Paiement: paiementCaution()
+return Paiement
+Systeme <-- Client: Paiement
+Utilisateur <- Systeme: afficherMessageErreur(Paiement)
+end
 
 @enduml

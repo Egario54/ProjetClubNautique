@@ -3,7 +3,7 @@ title Diagramme de Séquence - Consulter les cours disponibles
 actor Utilisateur
 participant Systeme
 participant Compte
-participant Cour
+participant Cours
 
 'Connexion à un compte'
 Utilisateur -> Systeme: seConnecter()
@@ -18,8 +18,8 @@ Utilisateur -> Systeme : consulterCours()
 Systeme -> Compte : verifierDroitsAcces()
 alt consultCours == true
     Compte --> Systeme : true
-    Systeme -> Cour : getCoursDispo()
-    Cour --> Systeme : listeCours
+    Systeme -> Cours : getCoursDispo()
+    Cours --> Systeme : listeCours
     Systeme --> Utilisateur : afficherListeCours()
 else consultCours == false
     Compte --> Systeme : false

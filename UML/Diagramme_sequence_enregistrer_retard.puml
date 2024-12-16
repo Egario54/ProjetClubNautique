@@ -16,7 +16,7 @@ Compte -> Utilisateur: confirmerConnexion()
 'Utilisateur'
 Utilisateur -> Systeme: signalerRetard()
 Systeme -> Materiel: enregistrerRetard()
-Materiel --> Systeme
-Systeme --> Utilisateur
+Materiel --> Systeme: string
+Systeme --> Utilisateur: string
 
 @enduml

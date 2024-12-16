@@ -17,23 +17,31 @@ Compte -> Utilisateur: confirmerConnexion()
 'Utilisateur encaisse un client'
 Utilisateur -> Systeme: encaisser()
 Systeme -> Paiement: creerPaiement()
-Paiement --> Systeme
+Paiement --> Systeme : Paiement
 
 'Séparation'
 |||
 
 'Utilisateur applique une reduction'
 group if [Reduction à appliquer]
-    Systeme -> Paiement : appliquerReduction()
-    return
+    Systeme -> Paiement : appliquerReduction(Paiement)
+    return Paiement
 end
 
 'Séparation'
 |||
 
-Systeme -> Terminal: payer()
-return
 
-Systeme -> Utilisateur: confirmerEncaissement()
+alt paiement = true
+Systeme -> Terminal: payer(Paiement)
+return true
+Systeme -> Utilisateur: confirmerEncaissement(Paiement)
+|||
 
+else paiement = false
+Systeme -> Terminal: payer(Paiement)
+return false
+Systeme -> Utilisateur: afficherMessageErreur(Paiement)
+|||
+end
 @enduml
