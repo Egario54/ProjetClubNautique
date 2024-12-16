@@ -1,0 +1,35 @@
+@startuml
+title Diagramme de Séquence - Récupérer une caution
+actor Utilisateur
+participant Systeme
+participant Compte
+participant Client
+participant Paiement
+
+'Connexion à un compte'
+Utilisateur -> Systeme: seConnecter()
+Systeme -> Compte: validationAuthentification()
+Compte -> Utilisateur: confirmerConnexion()
+
+'Séparation'
+|||
+
+'Utilisateur sélectionne un client'
+Utilisateur -> Systeme: rechercherClient()
+Systeme -> Client: rechercherClient()
+return
+Utilisateur <-- Systeme
+
+
+'Séparation'
+|||
+
+'Utilisateur récupère la caution'
+Utilisateur -> Systeme: recupererCaution()
+Systeme -> Client: recupererCaution()
+Client -> Paiement: paiementCaution()
+return
+Systeme <-- Client
+Utilisateur <-- Systeme
+
+@enduml

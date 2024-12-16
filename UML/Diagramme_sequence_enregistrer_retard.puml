@@ -1,0 +1,22 @@
+@startuml
+title Diagramme de Séquence - Enregistrer un retard
+actor Utilisateur
+participant Systeme
+participant Compte
+participant Materiel
+
+'Connexion à un compte'
+Utilisateur -> Systeme: seConnecter()
+Systeme -> Compte: validationAuthentification()
+Compte -> Utilisateur: confirmerConnexion()
+
+'Séparation'
+|||
+
+'Utilisateur'
+Utilisateur -> Systeme: signalerRetard()
+Systeme -> Materiel: enregistrerRetard()
+Materiel --> Systeme
+Systeme --> Utilisateur
+
+@enduml
