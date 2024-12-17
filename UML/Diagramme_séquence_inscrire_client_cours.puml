@@ -1,43 +1,31 @@
 @startuml
 title Diagramme de Séquence - Inscrire un client à un cours
-actor Utilisateur
+actor Accueille
 participant Systeme
 participant Compte
 participant Cours
 participant Client
 
 'Connexion à un compte'
-Utilisateur -> Systeme: seConnecter()
+Accueille -> Systeme: seConnecter()
 Systeme -> Compte: validationAuthentification()
-Compte -> Utilisateur: confirmerConnexion()
+return
+Systeme --> Accueille
 
 'Séparation'
 |||
 
 'Inscrire un client à un cour par propriétaire et moniteur'
-Utilisateur -> Systeme: inscrireClientCours()
-Systeme -> Compte : verifierDroitsAcces()
-alt consultCours == true
-    Compte --> Systeme : true
-    Systeme -> Cours : getListeCours()
-    Cours --> Systeme : listeCours
-    Systeme -> Utilisateur : afficherListeCours()
-    Utilisateur -> Systeme : selectionnerCours()
-    Systeme -> Client : getListeClients()
-    Client --> Systeme : listeClients
-    Systeme -> Utilisateur : afficherListeClients()
-    Utilisateur -> Systeme : selectionnerClient()
-    Systeme -> Utilisateur : afficherConfirmationInscription()
-    Systeme -> Cours : inscriptionClient()
-    alt confirmationInscription == true
-        Cours --> Systeme : true
-        Systeme -> Utilisateur : afficherMessageValidation()
-    else confirmationInscription == false
-        Cours --> Systeme : false
-        Systeme -> Utilisateur : afficherMessageErreur()
-    end
-else consultCours == false
-    Compte --> Systeme : false
-    Systeme --> Utilisateur : afficherMessageErreur()
-end
+Accueille -> Systeme: inscrireClientCours()
+        Systeme -> Cours : getListeCours()
+        Cours --> Systeme : listeCours
+        Systeme --> Accueille : afficherListeCours()
+        Accueille -> Systeme : selectionnerCours(cours)
+        Systeme -> Client : getListeClients()
+        Client --> Systeme : listeClients
+        Systeme -> Accueille : afficherListeClients()
+        Accueille -> Systeme : inscrireClientCours(client)
+        Systeme -> Cours : ajouterClient(client)
+        return
+        Systeme --> Accueille : Validation
 @enduml

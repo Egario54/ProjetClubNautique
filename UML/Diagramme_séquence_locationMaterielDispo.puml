@@ -1,6 +1,8 @@
 @startuml
 'https://plantuml.com/sequence-diagram
 
+title : Diagramme de séquence de la location de materiel disponible
+
 actor "moniteur de voile" as mono
 
 mono -> System : seConnecter()

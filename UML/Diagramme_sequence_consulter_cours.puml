@@ -1,6 +1,6 @@
 @startuml
 title Diagramme de Séquence - Consulter les cours disponibles
-actor Utilisateur
+actor Accueille as Utilisateur
 participant Systeme
 participant Compte
 participant Cours
@@ -8,21 +8,16 @@ participant Cours
 'Connexion à un compte'
 Utilisateur -> Systeme: seConnecter()
 Systeme -> Compte: validationAuthentification()
-Compte -> Utilisateur: confirmerConnexion()
+return
+Systeme --> Utilisateur
 
 'Séparation'
 |||
 
 'Consulter les cours disponibles'
 Utilisateur -> Systeme : consulterCours()
-Systeme -> Compte : verifierDroitsAcces()
-alt consultCours == true
-    Compte --> Systeme : true
-    Systeme -> Cours : getCoursDispo()
-    Cours --> Systeme : listeCours
-    Systeme --> Utilisateur : afficherListeCours()
-else consultCours == false
-    Compte --> Systeme : false
-    Systeme --> Utilisateur : afficherMessageErreur()
-end
+Systeme -> Cours : getCoursDispo()
+Cours --> Systeme : listeCours
+Systeme --> Utilisateur : afficherListeCours()
+
 @enduml

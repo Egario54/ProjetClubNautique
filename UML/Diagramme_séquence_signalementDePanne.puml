@@ -1,6 +1,8 @@
 @startuml
 'https://plantuml.com/sequence-diagram
 
+title : Diagramme de séquence du signalement d'une panne
+
 actor "moniteur de voile" as mono
 
 mono -> System : seConnecter()

@@ -1,28 +1,29 @@
 @startuml
 title Diagramme de Séquence - Encaisser un utilisateur
-actor Utilisateur
+actor Accueille
 participant Systeme
 participant Compte
 participant Paiement
 participant Terminal
 
 'Connexion à un compte'
-Utilisateur -> Systeme: seConnecter()
+Accueille -> Systeme: seConnecter()
 Systeme -> Compte: validationAuthentification()
-Compte -> Utilisateur: confirmerConnexion()
+return
+Systeme -> Accueille
 
 'Séparation'
 |||
 
-'Utilisateur encaisse un client'
-Utilisateur -> Systeme: encaisser()
+'Accueille encaisse un client'
+Accueille -> Systeme: encaisser()
 Systeme -> Paiement: creerPaiement()
 Paiement --> Systeme : Paiement
 
 'Séparation'
 |||
 
-'Utilisateur applique une reduction'
+'Accueille applique une reduction'
 group if [Reduction à appliquer]
     Systeme -> Paiement : appliquerReduction(Paiement)
     return Paiement
@@ -35,13 +36,13 @@ end
 alt paiement = true
 Systeme -> Terminal: payer(Paiement)
 return true
-Systeme -> Utilisateur: confirmerEncaissement(Paiement)
+Systeme -> Accueille: confirmerEncaissement(Paiement)
 |||
 
 else paiement = false
 Systeme -> Terminal: payer(Paiement)
 return false
-Systeme -> Utilisateur: afficherMessageErreur(Paiement)
+Systeme -> Accueille: afficherMessageErreur(Paiement)
 |||
 end
 @enduml

@@ -1,50 +1,51 @@
 @startuml
 title Diagramme de Séquence - Récupérer une caution
-actor Utilisateur
+actor Accueille
 participant Systeme
 participant Compte
 participant Client
 participant Paiement
 
 'Connexion à un compte'
-Utilisateur -> Systeme: seConnecter()
+Accueille -> Systeme: seConnecter()
 Systeme -> Compte: validationAuthentification()
-Compte -> Utilisateur: confirmerConnexion()
+return
+Systeme --> Accueille
 
 'Séparation'
 |||
 
-'Utilisateur sélectionne un client'
-Utilisateur -> Systeme: rechercherClient()
+'Accueille sélectionne un client'
+Accueille -> Systeme: rechercherClient()
 Systeme -> Client: rechercherClient()
 return listeClients
-Utilisateur <-- Systeme: listeClients
+Accueille <-- Systeme: listeClients
 
 
 'Séparation'
 |||
 
 'Sélection d'un client'
-Utilisateur -> Systeme: selectionnerClient()
+Accueille -> Systeme: selectionnerClient()
 return Client
 
 'Séparation'
 |||
 
-'Utilisateur récupère la caution'
-Utilisateur -> Systeme: recupererCaution()
+'Accueille récupère la caution'
+Accueille -> Systeme: recupererCaution()
 Systeme -> Client: recupererCaution()
 alt Paiement réussi
 Client -> Paiement: paiementCaution()
 return Paiement
 Systeme <-- Client: Paiement
-Utilisateur <- Systeme: afficherMessageValidation(Paiement)
+Accueille <- Systeme: afficherMessageValidation(Paiement)
 
 else Paiement échoué
 Client -> Paiement: paiementCaution()
 return Paiement
 Systeme <-- Client: Paiement
-Utilisateur <- Systeme: afficherMessageErreur(Paiement)
+Accueille <- Systeme: afficherMessageErreur(Paiement)
 end
 
 @enduml

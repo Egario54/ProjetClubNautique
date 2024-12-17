@@ -8,15 +8,16 @@ participant Cours
 'Connexion à un compte'
 Proprietaire -> Systeme: seConnecter()
 Systeme -> Compte: validationAuthentification()
-Compte -> Proprietaire: confirmerConnexion()
+return
+Systeme --> Proprietaire
 
 'Séparation'
 |||
 
 'Propriétaire ajoute un cours'
-Proprietaire -> Systeme: ajouterCours()
-Systeme -> Cours: creerCours()
-Cours --> Systeme: Cours
-Systeme --> Proprietaire: Cours
+Proprietaire -> Systeme: ajouterCours(12/08/2025:10:00,12/08/2025:11:30)
+Systeme -> Cours: creerCours(12/08/2025:10:00,12/08/2025:11:30)
+Cours --> Systeme
+Systeme --> Proprietaire
 
 @enduml

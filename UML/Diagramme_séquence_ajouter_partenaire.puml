@@ -8,18 +8,20 @@ participant Camping
 'Connexion à un compte'
 Proprietaire -> Systeme: seConnecter()
 Systeme -> Compte: validationAuthentification()
-Compte -> Proprietaire: confirmerConnexion()
+return
+Systeme --> Proprietaire
 
 'Séparation'
 |||
 
 'Ajouter un partenaire'
-Proprietaire -> Systeme: modifierListePartenaires()
+Proprietaire -> Systeme: afficherListePartenaires()
 Systeme -> Camping: obtenirListeCamping()
 Camping --> Systeme: listeCamping
-Systeme -> Proprietaire: afficherListePartenaires()
+Systeme -> Proprietaire: afficherListeCamping()
 
 Proprietaire -> Systeme: ajouterPartenaire(nom, réduction)
 Systeme -> Camping: ajouterPartenaire(nom, réduction)
-Camping -> Proprietaire: confirmerAjoutPartenaire()
+return
+Camping --> Proprietaire: confirmation
 @enduml
