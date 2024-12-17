@@ -1,0 +1,31 @@
+@startuml
+title Diagramme de Séquence - Consulter le materiel
+actor Utilisateur
+participant Systeme
+participant Compte
+participant Materiel
+
+
+
+'Connexion à un compte'
+Utilisateur -> Systeme: seConnecter()
+Systeme -> Compte: validationAuthentification()
+Compte -> Utilisateur: confirmerConnexion()
+
+'Séparation'
+|||
+
+'Utilisateur consulte le matériel'
+Utilisateur -> Systeme : consulterMateriel()
+Systeme -> Compte : verifierDroitsAcces()
+alt consultMat == true
+    Compte --> Systeme : true
+    Systeme -> Materiel : getMaterielDispo()
+    Materiel --> Systeme : listeMateriel
+    Systeme --> Utilisateur : afficherListeMateriel()
+else consultMat == false
+    Compte --> Systeme : false
+    Systeme --> Utilisateur : afficherMessageErreur()
+end
+
+@enduml

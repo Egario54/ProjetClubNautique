@@ -1,0 +1,26 @@
+@startuml
+title Diagramme de Séquence - Gérer les stocks de Materiel
+actor Proprietaire
+participant Systeme
+participant Compte
+participant Materiel
+
+'Connexion à un compte'
+Proprietaire -> Systeme: seConnecter()
+Systeme -> Compte: validationAuthentification()
+Compte -> Proprietaire: confirmerConnexion()
+
+
+
+'Séparation'
+|||
+
+
+'Propriétaire Alloue du Materiel disponible'
+Proprietaire -> Systeme: alloue_Materiel_disponible()
+Systeme -> Materiel: recupere_Materiel()
+Materiel --> Systeme: Materiel
+Systeme --> Proprietaire: Materiel
+
+
+@enduml

@@ -1,0 +1,22 @@
+@startuml
+title Diagramme de Séquence - Ajouter du Materiel
+actor Proprietaire
+participant Systeme
+participant Compte
+participant Materiel
+
+'Connexion à un compte'
+Proprietaire -> Systeme: seConnecter()
+Systeme -> Compte: validationAuthentification()
+Compte -> Proprietaire: confirmerConnexion()
+
+'Séparation'
+|||
+
+'Propriétaire ajoute un Materiel'
+Proprietaire -> Systeme: ajouter_Materiel()
+Systeme -> Materiel: creer_Materiel()
+Materiel --> Systeme: Materiel
+Systeme --> Proprietaire: Materiel
+
+@enduml
