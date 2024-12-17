@@ -1,0 +1,20 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+actor "moniteur de voile" as mono
+
+mono -> System : seConnecter()
+System -> Compte : validationAuthentification()
+return
+System --> mono
+mono -> System : consulterListeMaterielDisponible(12/08/2025:09:00,12/08/2025:16:00)
+System -> Materiel : ObtenirMateriel()
+return materiel1, materiel2, materiel3
+System -> mono : afficherListeMateriel(materiel1, materiel2,materiel3)
+mono -> System : reserverMateriel(materiel1,12/08/2025:09:00,12/08/2025:16:00)
+System -> Materiel : reserver(materiel1,12/08/2025:09:00,12/08/2025:16:00)
+return
+System --> mono
+
+
+@enduml
