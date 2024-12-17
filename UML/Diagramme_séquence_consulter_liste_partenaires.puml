@@ -1,22 +1,22 @@
 @startuml
 title Diagramme de Séquence - Consulter la liste des partenaires
-actor Propriétaire
+actor Accueille
 participant Systeme
 participant Compte
 participant Camping
 
 'Connexion à un compte'
-Propriétaire -> Systeme: seConnecter()
+Accueille -> Systeme: seConnecter()
 Systeme -> Compte: validationAuthentification()
 return
-Systeme --> Propriétaire
+Systeme --> Accueille
 
 'Séparation'
 |||
 
 'Consulter la liste des partenaires'
-Propriétaire -> Systeme: consulterListePartenaires()
+Accueille -> Systeme: consulterListePartenaires()
     Systeme -> Camping: obtenirListeCampings()
     Camping --> Systeme: listeCampings
-    Systeme --> Propriétaire: afficherListePartenaires()
+    Systeme --> Accueille: afficherListePartenaires()
 @enduml

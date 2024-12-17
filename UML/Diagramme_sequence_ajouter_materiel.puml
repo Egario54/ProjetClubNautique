@@ -8,7 +8,8 @@ participant Materiel
 'Connexion à un compte'
 Proprietaire -> Systeme: seConnecter()
 Systeme -> Compte: validationAuthentification()
-Compte -> Proprietaire: confirmerConnexion()
+return
+Systeme --> Proprietaire
 
 'Séparation'
 |||
@@ -16,7 +17,7 @@ Compte -> Proprietaire: confirmerConnexion()
 'Propriétaire ajoute un Materiel'
 Proprietaire -> Systeme: ajouter_Materiel()
 Systeme -> Materiel: creer_Materiel()
-Materiel --> Systeme: Materiel
-Systeme --> Proprietaire: Materiel
+Materiel --> Systeme: materiel
+Systeme --> Proprietaire: materiel
 
 @enduml

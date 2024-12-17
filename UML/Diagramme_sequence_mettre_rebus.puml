@@ -19,15 +19,10 @@ Compte -> Proprietaire: confirmerConnexion()
 'Proprietaire consulte le matériel'
 Proprietaire -> Systeme : consulterMateriel()
 Systeme -> Compte : verifierDroitsAcces()
-alt consultMat == true
-    Compte --> Systeme : true
-    Systeme -> Materiel : getMaterielDispo()
-    Materiel --> Systeme : listeMateriel
-    Systeme --> Proprietaire : afficherListeMateriel()
-else consultMat == false
-    Compte --> Systeme : false
-    Systeme --> Proprietaire : afficherMessageErreur()
-end
+Compte --> Systeme : true
+Systeme -> Materiel : getMaterielDispo()
+Materiel --> Systeme : listeMateriel
+Systeme --> Proprietaire : afficherListeMateriel()
 
 'Séparation'
 |||
@@ -35,6 +30,7 @@ end
 'Propriétaire met au rebus un materiel'
 Proprietaire -> Systeme : mettre_au_rebut()
 Systeme -> Materiel : supprimer_materiel()
-Systeme -> Proprietaire : envoyer_confirmation()
+return
+Systeme --> Proprietaire : confirmation
 
 @enduml

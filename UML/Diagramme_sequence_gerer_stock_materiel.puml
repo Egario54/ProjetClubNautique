@@ -8,7 +8,8 @@ participant Materiel
 'Connexion à un compte'
 Proprietaire -> Systeme: seConnecter()
 Systeme -> Compte: validationAuthentification()
-Compte -> Proprietaire: confirmerConnexion()
+return
+Systeme --> Proprietaire
 
 
 

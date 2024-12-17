@@ -1,31 +1,32 @@
 @startuml
 
+title : diagramme de cas d'utilisation
+
 left to right direction
 
-:propriétaire: -down-> (consulter le materiel)
-(voir la liste des partenaires) -down-> (modifier la liste des partenaires)
-:propriétaire: -down-> (consulter la liste des cours disponibles)
-:propriétaire: -down-> (encaisser les clients)
-:propriétaire: -down-> (récupérer une caution)
-:propriétaire: -down-> (enregistrer un retard dans le rendu du materiel)
-:propriétaire: -down-> (voir la liste des partenaires)
+:Moniteur de voile: as moniteur
+
+:accueil: <|.up. :propriétaire: : extends
+:moniteur: <|.up. :accueil: : extends
+
+:propriétaire: -down-> (modifier la liste des partenaires)
 :propriétaire: -down-> (programmer des cours)
+:propriétaire: -down-> (supprimer des cours)
 :propriétaire: -down-> (gérer les stocks de materiel)
 (gérer les stocks de materiel) -down-> (ajouter du materiel)
 (gérer les stocks de materiel) -down-> (mettre du materiel aux rebus)
 
-:accueil: -down-> (consulter la liste des cours disponibles)
-(consulter la liste des cours disponibles) -down-> (inscrire un client à un cours)
+:accueil: -down-> (vendre un forfait a un client)
+:accueil: -down-> (voir la liste des partenaires)
+:accueil: -down-> (inscrire un client à un cours)
 :accueil: -down-> (récupérer une caution)
-:accueil: -down-> (consulter le materiel)
-(consulter le materiel) -down-> (louer du materiel disponible)
+:accueil: -down-> (louer du materiel disponible)
 (consulter le materiel) -down-> (signaler une panne)
 (consulter le materiel) -down-> (réserver du materiel)
 :accueil: -down-> (enregistrer un retard dans le rendu du materiel)
 :accueil: -down-> (encaisser les clients)
 (encaisser les clients) -down-> (appliquer une réduction)
 
-:Moniteur de voile: as moniteur
 
 moniteur -down-> (consulter les cours)
 moniteur -down-> (consulter le materiel)
