@@ -3,7 +3,7 @@
 
 title : Diagramme de séquence - Signaler une panne
 
-actor "moniteur de voile" as mono
+actor "Moniteur de voile" as mono
 
 'Connexion à un compte'
 mono -> System : seConnecter()

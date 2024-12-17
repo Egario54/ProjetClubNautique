@@ -1,23 +1,23 @@
 @startuml
 title Diagramme de Séquence - Consulter le materiel
-actor Accueille
+actor Accueil
 participant Systeme
 participant Compte
 participant Materiel
 
 'Connexion à un compte'
-Accueille -> Systeme: seConnecter()
+Accueil -> Systeme: seConnecter()
 Systeme -> Compte: validationAuthentification()
 return
-Systeme --> Accueille
+Systeme --> Accueil
 
 'Séparation'
 |||
 
 'Accueille consulte le matériel'
-Accueille -> Systeme : consulterMateriel()
+Accueil -> Systeme : consulterMateriel()
 Systeme -> Materiel : getMaterielDispo()
 Materiel --> Systeme : listeMateriel
-Systeme --> Accueille : afficherListeMateriel(listeMateriel)
+Systeme --> Accueil : afficherListeMateriel(listeMateriel)
 
 @enduml

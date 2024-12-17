@@ -1,6 +1,6 @@
 @startuml
 title Diagramme de Séquence - Consulter les cours disponibles
-actor Accueille as Utilisateur
+actor Accueil as Utilisateur
 participant Systeme
 participant Compte
 participant Cours

@@ -1,31 +1,31 @@
 @startuml
 title Diagramme de Séquence - Inscrire un client à un cours
-actor Accueille
+actor Accueil
 participant Systeme
 participant Compte
 participant Cours
 participant Client
 
 'Connexion à un compte'
-Accueille -> Systeme: seConnecter()
+Accueil -> Systeme: seConnecter()
 Systeme -> Compte: validationAuthentification()
 return
-Systeme --> Accueille
+Systeme --> Accueil
 
 'Séparation'
 |||
 
 'Inscrire un client à un cour par propriétaire et moniteur'
-Accueille -> Systeme: inscrireClientCours()
+Accueil -> Systeme: inscrireClientCours()
         Systeme -> Cours : getListeCours()
         Cours --> Systeme : listeCours
-        Systeme --> Accueille : afficherListeCours()
-        Accueille -> Systeme : selectionnerCours(cours)
+        Systeme --> Accueil : afficherListeCours()
+        Accueil -> Systeme : selectionnerCours(cours)
         Systeme -> Client : getListeClients()
         Client --> Systeme : listeClients
-        Systeme -> Accueille : afficherListeClients()
-        Accueille -> Systeme : inscrireClientCours(client)
+        Systeme -> Accueil : afficherListeClients()
+        Accueil -> Systeme : inscrireClientCours(client)
         Systeme -> Cours : ajouterClient(client)
         return
-        Systeme --> Accueille
+        Systeme --> Accueil
 @enduml
