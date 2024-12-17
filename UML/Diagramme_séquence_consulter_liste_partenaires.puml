@@ -16,7 +16,7 @@ Systeme --> Accueille
 
 'Consulter la liste des partenaires'
 Accueille -> Systeme: consulterListePartenaires()
-    Systeme -> Camping: obtenirListeCampings()
-    Camping --> Systeme: listeCampings
-    Systeme --> Accueille: afficherListePartenaires()
+Systeme -> Camping: getListeCampings()
+Camping --> Systeme: listeCampings
+Systeme --> Accueille: afficherListePartenaires(listeCampings)
 @enduml

@@ -1,0 +1,28 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+title : Diagramme de séquence - Signaler une panne
+
+actor "moniteur de voile" as mono
+
+'Connexion à un compte'
+mono -> System : seConnecter()
+System -> Compte : validationAuthentification()
+return
+System --> mono
+
+'Séparation'
+|||
+
+'Le moniteur signale une panne'
+mono -> System : consulterListeMateriel()
+System -> Materiel : getMateriel()
+return listeMateriel
+System -> mono : afficherListeMateriel(listeMateriel)
+mono -> System : déclarerPanne(materiel2)
+System -> Materiel : déclarerPanne(materiel2)
+return
+System --> mono
+
+
+@enduml

@@ -18,6 +18,6 @@ Systeme --> Utilisateur
 Utilisateur -> Systeme : consulterCours()
 Systeme -> Cours : getCoursDispo()
 Cours --> Systeme : listeCours
-Systeme --> Utilisateur : afficherListeCours()
+Systeme --> Utilisateur : afficherListeCours(listeCours)
 
 @enduml

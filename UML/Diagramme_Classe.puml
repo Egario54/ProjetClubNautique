@@ -1,0 +1,201 @@
+@startuml
+'https://plantuml.com/class-diagram'
+
+Commande "1" -up- "*" Forfait : concerne
+Commande "1" -right- "*" Client : commandé par
+Commande "1" -down- "*" Cours : concerne
+Commande "*" -down- "1" Location : concerne
+Commande "1" -- "1" Paiement : concerne
+Moniteur "*" -right- "1" Cours : donne
+Materiel "*" -- "*" Cours : réservé pour
+Materiel "*" -up- "*" Location : loué
+Panne "1" -- "1" Materiel : concerne
+HistoriquePanne "*" -- "1" Materiel : enregistré
+Caution "1" -left- "1" Location : concerne
+
+Personne <|-- Client : hérite
+Personne <|-- Accueille : hérite
+Accueille <|-- Moniteur : hérite
+Accueille <|-- Proprietaire : hérite
+
+Materiel <|-- Catamaran : hérite
+Materiel <|-- Pedalo : hérite
+Materiel <|-- Paddle : hérite
+Materiel <|-- Flotteur : hérite
+Materiel <|-- PiedMat : hérite
+Materiel <|-- Voile : hérite
+Materiel <|-- Bateau : hérite
+
+class Caution{
+    idCaution: int
+    montant: double
+    saisie: int
+    rendue: int
+}
+
+class Forfait{
+    idForfait: int
+    type: string
+    prix: double
+}
+
+class Paiement{
+    idPaiement: int
+    montant: double
+    estPayé: boolean
+}
+
+class Camping{
+    idCamping: int
+    nomCamping: string
+    réduction: double
+}
+
+class Client{
+    adresse: string
+    materielSouhaite: Materiel
+    appreciations: string
+    paiementCaution(): paiement
+}
+
+class Commande{
+    idCommande: int
+}
+
+class Cours{
+    idCours: int
+    niveau: string
+    date: date
+    heureDebut: string
+    estAnnule: boolean
+    nbPlace: int
+}
+
+class Personne{
+    idPersonne: int
+    nom: string
+    prenom: string
+}
+
+class Accueille{
+    seConnecter(): void
+    afficherListePartenaires(): void
+    consulterCours(): void
+    encaisser(): void
+    signalerRetard(): void
+    inscrireClientCours(): void
+    selectionnerCours(cour): void
+    inscrireClientCours(client): void
+    consulterListeMaterielDisponible(heureDebut, heureFin): void
+    louerMateriel(materiel, heureDebut, heureFin): void
+    rechercherClient(): ArrayList<Client>
+    selectionnerClient(): Client
+    reserverMateriel(materiel,heureDebut,heureFin): void
+    consulterListeMateriel(): void
+    declarerPanne(materiel): void
+}
+
+class Moniteur{
+    diplôme: boolean
+}
+
+class Proprietaire{
+    ajouterPartenaire(nom, reduction): void
+    supprimerPartnaire(partenaire): void
+    ajouterCours(date): void
+    ajouterMateriel(): void
+    allouerMaterielDisponible(): Materiel
+    mettreAuRebut(materiel): void
+    recupererCaution(): void
+}
+
+class Location{
+    idLocation: int
+    prix: double
+    dateLoc: date
+    heureDebutLoc: string
+    heureFinLoc: string
+    etat: int
+}
+
+class Materiel{
+    idMateriel: int
+    disponible: boolean
+}
+
+class Catamaran{
+    nbPlace: int
+}
+
+class Pedalo{
+    nbPlace: int
+}
+
+class Paddle{
+    nbLitres: double
+}
+
+class Flotteur{
+    nbLitres: double
+}
+
+class PiedMat{
+    
+}
+
+class Voile{
+    nbMetreCarre: double
+}
+
+class Bateau{
+    type: string
+}
+
+class Panne{
+    idPanne: int
+    typePanne: string
+    datePanne: date
+}
+
+class HistoriquePanne{
+    idHistPanne: int
+    typeHistPanne: string
+    dateHistPanne: date
+}
+
+class Systeme{
+    validationAuthentification(): void
+    creerCours(date): void
+    getListeCours(): ArrayList<Cours>
+    afficherListeCours(listeCours): void
+    getListeCamping(): ArrayList<Camping>
+    afficherListeCamping(listeCamping): void
+    ajouterPartenaire(nom, reduction): void
+    getCoursDispo(): ArrayList<Cours>
+    creerPaiement(): Paiement
+    appliquerReduction(paiement): Paiement
+    payer(paiement): boolean
+    confirmerEncaissement(paiement): void
+    afficherMessageErreur(paiement): void
+    enregistrerRetard(): void
+    getListeClients(): ArrayList<Client>
+    afficherListeClients(listeClient): void
+    ajouterClient(client): void
+    getMaterielDisponible(): ArrayList<Materiel>
+    louer(materiel, heureDebut, heureFin): void
+    rechercherClient(): ArrayList<Client>
+    recupererCaution(): Paiement
+    afficherMessageValidation(paiement): void
+    afficherListeMateriel(listeMateriel): void
+    reserver(materiel, heureDebut, heureFin): void
+    getMateriel(): ArrayList<Materiel>
+    declarerPanne(materiel): void
+    supprimerPartnaire(partenaire): void
+    creerMateriel(): void
+    recupererMateriel(): Materiel
+    verifierDroitAcces(): boolean
+    supprimerMateriel(materiel): void
+    envoyerMessageConfirmation(): void
+}
+
+@enduml

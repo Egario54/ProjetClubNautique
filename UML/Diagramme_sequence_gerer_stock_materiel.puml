@@ -12,14 +12,13 @@ return
 Systeme --> Proprietaire
 
 
-
 'Séparation'
 |||
 
 
 'Propriétaire Alloue du Materiel disponible'
-Proprietaire -> Systeme: alloue_Materiel_disponible()
-Systeme -> Materiel: recupere_Materiel()
+Proprietaire -> Systeme: allouerMaterielDisponible()
+Systeme -> Materiel: recupererMateriel()
 Materiel --> Systeme: Materiel
 Systeme --> Proprietaire: Materiel
 

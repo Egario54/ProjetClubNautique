@@ -27,5 +27,5 @@ Accueille -> Systeme: inscrireClientCours()
         Accueille -> Systeme : inscrireClientCours(client)
         Systeme -> Cours : ajouterClient(client)
         return
-        Systeme --> Accueille : Validation
+        Systeme --> Accueille
 @enduml

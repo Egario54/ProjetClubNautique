@@ -8,7 +8,8 @@ participant Materiel
 'Connexion à un compte'
 Proprietaire -> Systeme: seConnecter()
 Systeme -> Compte: validationAuthentification()
-Compte -> Proprietaire: confirmerConnexion()
+return
+Systeme --> Proprietaire
 
 
 
@@ -22,15 +23,14 @@ Systeme -> Compte : verifierDroitsAcces()
 Compte --> Systeme : true
 Systeme -> Materiel : getMaterielDispo()
 Materiel --> Systeme : listeMateriel
-Systeme --> Proprietaire : afficherListeMateriel()
+Systeme --> Proprietaire : afficherListeMateriel(listeMateriel)
 
 'Séparation'
 |||
 
 'Propriétaire met au rebus un materiel'
-Proprietaire -> Systeme : mettre_au_rebut()
-Systeme -> Materiel : supprimer_materiel()
-return
-Systeme --> Proprietaire : confirmation
+Proprietaire -> Systeme : mettreAuRebut(materiel)
+Systeme -> Materiel : supprimerMateriel(materiel)
+Systeme -> Proprietaire : envoyerConfirmation()
 
 @enduml

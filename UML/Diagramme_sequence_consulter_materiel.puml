@@ -5,8 +5,6 @@ participant Systeme
 participant Compte
 participant Materiel
 
-
-
 'Connexion à un compte'
 Accueille -> Systeme: seConnecter()
 Systeme -> Compte: validationAuthentification()
@@ -18,8 +16,8 @@ Systeme --> Accueille
 
 'Accueille consulte le matériel'
 Accueille -> Systeme : consulterMateriel()
-    Systeme -> Materiel : getMaterielDispo()
-    Materiel --> Systeme : listeMateriel
-    Systeme --> Accueille : afficherListeMateriel()
+Systeme -> Materiel : getMaterielDispo()
+Materiel --> Systeme : listeMateriel
+Systeme --> Accueille : afficherListeMateriel(listeMateriel)
 
 @enduml

@@ -1,0 +1,28 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+title : Diagramme de séquence - Réserver du materiel
+
+actor "moniteur de voile" as mono
+
+'Connexion à un compte'
+mono -> System : seConnecter()
+System -> Compte : validationAuthentification()
+return
+System --> mono
+
+'Séparation'
+|||
+
+'Le moniteur réserve du materiel'
+mono -> System : consulterListeMaterielDisponible(12/08/2025:09:00,12/08/2025:16:00)
+System -> Materiel : getMaterielDisponible()
+return listeMateriel
+System -> mono : afficherListeMateriel(listeMateriel)
+mono -> System : reserverMateriel(materiel1,12/08/2025:09:00,12/08/2025:16:00)
+System -> Materiel : reserver(materiel1,12/08/2025:09:00,12/08/2025:16:00)
+return
+System --> mono
+
+
+@enduml

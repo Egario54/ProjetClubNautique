@@ -16,9 +16,9 @@ Systeme --> Proprietaire
 
 'Ajouter un partenaire'
 Proprietaire -> Systeme: afficherListePartenaires()
-Systeme -> Camping: obtenirListeCamping()
+Systeme -> Camping: getListeCamping()
 Camping --> Systeme: listeCamping
-Systeme -> Proprietaire: afficherListeCamping()
+Systeme -> Proprietaire: afficherListeCamping(listeCamping)
 
 Proprietaire -> Systeme: ajouterPartenaire(nom, réduction)
 Systeme -> Camping: ajouterPartenaire(nom, réduction)

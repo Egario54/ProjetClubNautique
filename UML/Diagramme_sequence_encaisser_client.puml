@@ -10,7 +10,7 @@ participant Terminal
 Accueille -> Systeme: seConnecter()
 Systeme -> Compte: validationAuthentification()
 return
-Systeme -> Accueille
+Systeme --> Accueille
 
 'Séparation'
 |||
@@ -32,17 +32,18 @@ end
 'Séparation'
 |||
 
-
+'Accueille demande un paiement'
 alt paiement = true
 Systeme -> Terminal: payer(Paiement)
 return true
 Systeme -> Accueille: confirmerEncaissement(Paiement)
+
+'Séparation'
 |||
 
 else paiement = false
 Systeme -> Terminal: payer(Paiement)
 return false
 Systeme -> Accueille: afficherMessageErreur(Paiement)
-|||
 end
 @enduml

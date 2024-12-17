@@ -1,0 +1,27 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+title : Diagramme de séquence - Louer du materiel disponible
+
+actor "moniteur de voile" as mono
+
+'Connexion à un compte'
+mono -> System : seConnecter()
+System -> Compte : validationAuthentification()
+return
+System --> mono
+
+'Séparation'
+|||
+
+'Le moniteur gère la location du materiel'
+mono -> System : consulterListeMaterielDisponible(12/08/2025:09:00,12/08/2025:16:00)
+System -> Materiel : getMaterielDisponible()
+return listeMateriel
+System -> mono : afficherListeMateriel(listeMateriel)
+mono -> System : louerMateriel(materiel1,12/08/2025:09:00,12/08/2025:16:00)
+System -> Materiel : louer(materiel1,12/08/2025:09:00,12/08/2025:16:00)
+return
+System --> mono
+
+@enduml

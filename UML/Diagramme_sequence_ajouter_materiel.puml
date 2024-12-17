@@ -15,9 +15,9 @@ Systeme --> Proprietaire
 |||
 
 'Propriétaire ajoute un Materiel'
-Proprietaire -> Systeme: ajouter_Materiel()
-Systeme -> Materiel: creer_Materiel()
-Materiel --> Systeme: materiel
-Systeme --> Proprietaire: materiel
+Proprietaire -> Systeme: ajouterMateriel()
+Systeme -> Materiel: creerMateriel()
+Materiel --> Systeme
+Systeme --> Proprietaire
 
 @enduml
