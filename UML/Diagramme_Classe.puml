@@ -5,7 +5,7 @@ Commande "1" -up- "*" Forfait : concerne
 Commande "1" -right- "*" Client : commandé par
 Commande "1" -down- "*" Cours : concerne
 Commande "*" -down- "1" Location : concerne
-Commande "1" -- "1" Paiement : concerne
+Commande "1" -- "*" Paiement : concerne
 Moniteur "*" -right- "1" Cours : donne
 Materiel "*" -- "*" Cours : réservé pour
 Materiel "*" -up- "*" Location : loué
@@ -14,9 +14,9 @@ HistoriquePanne "*" -- "1" Materiel : enregistré
 Caution "1" -left- "1" Location : concerne
 
 Personne <|-- Client : hérite
-Personne <|-- Accueille : hérite
-Accueille <|-- Moniteur : hérite
-Accueille <|-- Proprietaire : hérite
+Personne <|-- Accueil : hérite
+Accueil <|-- Moniteur : hérite
+Accueil <|-- Proprietaire : hérite
 
 Materiel <|-- Catamaran : hérite
 Materiel <|-- Pedalo : hérite
@@ -29,8 +29,7 @@ Materiel <|-- Bateau : hérite
 class Caution{
     idCaution: int
     montant: double
-    saisie: int
-    rendue: int
+    etat: int
 }
 
 class Forfait{
@@ -77,7 +76,7 @@ class Personne{
     prenom: string
 }
 
-class Accueille{
+class Accueil{
     seConnecter(): void
     afficherListePartenaires(): void
     consulterCours(): void
@@ -113,8 +112,8 @@ class Location{
     idLocation: int
     prix: double
     dateLoc: date
-    heureDebutLoc: string
-    heureFinLoc: string
+    heureDebutLoc: date
+    heureFinLoc: date
     etat: int
 }
 
