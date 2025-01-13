@@ -6,7 +6,7 @@ define('BASE_HEADER', BASE_PATH . '/views/header.php');
 
 // Définir le chemin de base dynamique
 $baseUrl = dirname($_SERVER['SCRIPT_NAME']);
-//echo($baseUrl);
+echo($baseUrl);
 $baseUrl = rtrim($baseUrl, '/');
 
 // Normaliser l'URI

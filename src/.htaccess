@@ -1,0 +1,10 @@
+RewriteEngine On
+RewriteBase /ProjetClubNautique/src/
+
+# Exclure certains fichiers et répertoires de la réécriture
+RewriteCond %{REQUEST_URI} !\.(css|js|jpg|jpeg|png|gif|ico|pdf)$
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Toujours rediriger vers index.php pour les autres requêtes
+RewriteRule ^ index.php [L]
