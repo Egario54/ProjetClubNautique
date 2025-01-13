@@ -4,14 +4,17 @@
     <title>Gestion de Camping</title>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="/client">Clients</a></li>
-            <li><a href="/partenaire">Partenaires</a></li>
-            <li><a href="/materiel">Matériel</a></li>
-            <li><a href="/planning">Planning</a></li>
-            <li><a href="/reservation">Réservation</a></li>
-        </ul>
-    </nav>
-</body>
-</html>
+<?php
+// Définir le chemin de base dynamique
+$baseUrl = dirname($_SERVER['SCRIPT_NAME']);
+$baseUrl = rtrim($baseUrl, '/');
+?>
+<nav>
+    <ul>
+        <li><a href="<?= $baseUrl ?>/client">Clients</a></li>
+        <li><a href="<?= $baseUrl ?>/partenaire">Partenaires</a></li>
+        <li><a href="<?= $baseUrl ?>/materiel">Matériel</a></li>
+        <li><a href="<?= $baseUrl ?>/planning">Planning</a></li>
+        <li><a href="<?= $baseUrl ?>/reservation">Réservation</a></li>
+    </ul>
+</nav>

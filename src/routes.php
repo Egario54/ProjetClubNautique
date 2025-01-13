@@ -3,9 +3,19 @@
 define('BASE_PATH', __DIR__);
 define('BASE_HEADER', BASE_PATH . '/views/header.php');
 
-$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-if ($uri === '/') {
+// Définir le chemin de base dynamique
+$baseUrl = dirname($_SERVER['SCRIPT_NAME']);
+//echo($baseUrl);
+$baseUrl = rtrim($baseUrl, '/');
+
+// Normaliser l'URI
+$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$uri = substr($uri, strlen($baseUrl)); // Retirer BASE_URL de l'URI
+$uri = rtrim($uri, '/'); // Supprimer les '/' en fin d'URI
+
+// Gestion des routes
+if ($uri === '') {
     require 'views/index.php';
 } elseif ($uri === '/client') {
     require 'controllers/ClientController.php';
